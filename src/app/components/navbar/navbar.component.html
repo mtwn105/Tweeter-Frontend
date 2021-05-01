@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Tweeter</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="!authService.isLoggedIn">
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/signup">Sign Up</button>
+  </ng-container>
+  <ng-container *ngIf="authService.isLoggedIn">
+    <button *ngIf="this.router.url.includes('users')" mat-button routerLink="/home">Home</button>
+    <button *ngIf="this.router.url.includes('home') || this.router.url.includes('profile')" mat-button
+      routerLink="/users">All Users</button>
+    <button mat-button (click)="authService.signOut()">Logout</button>
+  </ng-container>
+</mat-toolbar>

@@ -1,0 +1,22 @@
+<mat-card (click)="openProfile()" class="mat-elevation-z4 p-2 mx-auto mt-2">
+  <mat-card-content class="py-2">
+    <div class="mx-4 justify-items-space-around" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="gappx">
+        <ngx-avatar class="m-2" [name]="user.firstName + ' ' + user.lastName"></ngx-avatar>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="gappx">
+        <div class="justify-items-space-between" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
+          <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="gappx">
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
+              <p class="font-weight__800 font-size-2 mr-2">{{user?.firstName}} {{user?.lastName}}</p>
+            </div>
+            <p class="font-weight__800 color-primary font-size-small">@{{user?.username}}</p>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
+              <p class="font-size-1 mr-2">Email: {{user?.email}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

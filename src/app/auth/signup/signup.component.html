@@ -1,0 +1,98 @@
+<div class="p-4 flex justify-center main_div" fxLayout="column wrap" fxLayoutAlign="center center">
+
+  <div class="text-center">
+    <div class="login__text-div">
+      <h1 class="mat-display-3 mb-0 font-weight__800 text-white">Signup</h1>
+      <h1 class="mat-display-1 mb-2 text-gray-300">Get started with tweeting your views.!</h1>
+      <p class="text-gray-400">If you already have an account, you can <a class="text-white"
+          routerLink="/sign-in"><strong>login
+            here</strong></a></p>
+      <mat-card class="mat-elevation-z6 h-100 p-6 mx-auto mt-2">
+        <mat-card-title>Fill in your details</mat-card-title>
+        <mat-card-content class="py-2">
+          <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Enter your first name" formControlName="firstName">
+              <mat-error *ngIf="submitted && !!signupForm.get('firstName').invalid">First name is mandatory</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Enter your last name" formControlName="lastName">
+              <mat-error *ngIf="submitted && !!signupForm.get('lastName').invalid">Last name is mandatory</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Email ID</mat-label>
+              <input matInput placeholder="Enter your email address" type="email" formControlName="email">
+
+              <mat-error *ngIf="submitted && !!signupForm.get('email').errors?.required">Email is mandatory</mat-error>
+              <mat-error *ngIf="submitted && !!signupForm.get('email').errors?.email">Email is invalid</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Mobile</mat-label>
+              <input matInput placeholder="Enter your mobile number" formControlName="contactNumber" type="tel">
+
+              <mat-error *ngIf="submitted && !!signupForm.get('contactNumber').errors?.required">Mobile number is
+                mandatory
+              </mat-error>
+              <mat-error
+                *ngIf="submitted && (!!signupForm.get('contactNumber').errors?.minlength || !!signupForm.get('contactNumber').errors?.maxlength)">
+                Mobile number should be of 10
+                digits</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>User Name</mat-label>
+              <input matInput placeholder="Enter your last name" formControlName="username">
+              <mat-error *ngIf="submitted && !!signupForm.get('username').invalid">User name is mandatory</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                formControlName="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="submitted && !!signupForm.get('password').errors?.required">Password is mandatory
+              </mat-error>
+              <mat-error *ngIf="submitted && !!signupForm.get('password').errors?.minlength">Password should be atleast
+                8 letters</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput placeholder="Re-Enter your password" [type]="hide ? 'password' : 'text'"
+                formControlName="confirmPassword">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="submitted && !!signupForm.get('confirmPassword').errors?.required">Password is mandatory
+              </mat-error>
+              <mat-error *ngIf="submitted && !!signupForm.get('confirmPassword').errors?.minlength">Password should be
+                atleast
+                8 letters</mat-error>
+              <mat-error *ngIf="submitted && !!signupForm.get('confirmPassword').errors?.confirmedValidator">Passwords
+                does not match</mat-error>
+            </mat-form-field>
+
+            <button type="submit" color="primary" mat-flat-button>
+              <mat-icon>people</mat-icon>
+              Signup
+            </button>
+
+
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container grid p-6 mx-auto">
+
+  <mat-card class="mat-elevation-z6 h-100 p-4 mx-auto mt-2">
+    <mat-card-title>
+      <p class="font-weight__800 color-primary font-size-1-5">Search for users</p>
+    </mat-card-title>
+    <mat-card-content class="py-2">
+
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput placeholder="Enter username to search" [(ngModel)]="searchText">
+        <button color="primary" (click)="search()" mat-button [disabled]="!searchText || searchText.trim().length == 0"
+          matSuffix mat-icon-button>
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-form-field>
+
+    </mat-card-content>
+  </mat-card>
+
+  <div class="grid-cols mt-4 users-container mx-auto">
+    <ng-container *ngFor="let user of users">
+      <app-user-card [user]="user"></app-user-card>
+    </ng-container>
+
+  </div>
+
+</div>

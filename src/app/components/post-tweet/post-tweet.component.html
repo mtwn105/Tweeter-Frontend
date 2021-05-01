@@ -1,0 +1,26 @@
+<div class="post-tweet-container">
+  <mat-card class="mat-elevation-z6 h-100 p-4 mx-auto mt-2">
+    <mat-card-title>
+      <p class="font-weight__800 color-primary font-size-1-5">Post a tweet</p>
+    </mat-card-title>
+    <mat-card-content class="py-2">
+      <form [formGroup]="tweetForm" (ngSubmit)="postTweet()">
+
+        <mat-form-field appearance="outline" class="w-100">
+          <textarea rows="3" matInput placeholder="Write the tweet here" formControlName="text">
+          </textarea>
+          <mat-error *ngIf="tweetForm.get('text').errors?.required">Tweet cannot be empty</mat-error>
+          <mat-error *ngIf="tweetForm.get('text').errors?.maxlength">Tweet can be only upto 144
+            charachters</mat-error>
+        </mat-form-field>
+
+        <button type="submit" color="primary" mat-flat-button>
+          <mat-icon>done</mat-icon>
+          Post
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

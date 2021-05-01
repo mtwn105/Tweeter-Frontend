@@ -1,0 +1,22 @@
+<div class="container p-6">
+  <div fxLayout="row" fxLayoutAlign="center" class="row">
+    <div class="user-container p-4 text-center">
+      <ngx-avatar [size]="150" [name]="user?.firstName + ' ' + user?.lastName"></ngx-avatar>
+      <p class="font-weight__800 pt-2 font-size-1-5">{{user?.firstName}} {{user?.lastName}}</p>
+      <p class="font-weight__800 color-primary font-size-2">@{{user?.username}}</p>
+    </div>
+
+    <div class="col tweets-container text-center">
+      <div class="row my-4">
+        <ng-container *ngFor="let tweet of tweets">
+          <app-tweet [loggedInUser]="loggedInUser" [tweet]="tweet"></app-tweet>
+        </ng-container>
+        <ng-container *ngIf="!tweets || tweets.length == 0">
+          <p class="font-weight__800 pt-2 font-size-1-5">No tweets</p>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+
+</div>

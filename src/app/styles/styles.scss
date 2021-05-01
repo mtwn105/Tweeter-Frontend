@@ -1,0 +1,38 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "fonts";
+@import "theme";
+@import "variables";
+@import "colors";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+
+* {
+  font-family: $font-primary;
+}
+
+a {
+  text-decoration: none;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+.padding-bottom-3 {
+  padding-bottom: 3px;
+}
