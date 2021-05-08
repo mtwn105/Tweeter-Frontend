@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -48,6 +48,10 @@ export class TweetService {
 
   replyTweet(username, tweetId, tweet) {
     return this.http.post(`${this.serverUrl}/tweets/${username}/reply/${tweetId}`, tweet);
+  }
+
+  deleteTweet(username, tweetId) {
+    return this.http.delete(`${this.serverUrl}/tweets/${username}/delete/${tweetId}`);
   }
 
 }

@@ -38,9 +38,13 @@
       <p class="font-weight-bold vertical-align-middle padding-bottom-3 color-primary mb-1">
         {{tweet.userLikes != null ? tweet.userLikes.length : 0}} likes
       </p>
-      <button color="primary" *ngIf="tweet.userId == userService.loggedInUserId" mat-icon-button>
+      <button color="primary" [matMenuTriggerFor]="menu" *ngIf="tweet.userId == userService.loggedInUserId"
+        mat-icon-button>
         <mat-icon>more_horiz</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="deleteTweet()" mat-menu-item>Delete</button>
+      </mat-menu>
     </div>
 
     <ng-container *ngIf="!!tweet.replies && tweet.replies.length > 0">

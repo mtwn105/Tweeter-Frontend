@@ -37,6 +37,7 @@ export class PostTweetComponent implements OnInit {
     this.submitted = false;
 
     this.tweetService.postTweet(this.userDetails.username, this.tweetForm.value).subscribe((res: any) => {
+      this.tweetForm.reset();
       this.tweetService.refreshTweets();
     });
 

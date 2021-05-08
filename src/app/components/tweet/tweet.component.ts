@@ -2,7 +2,7 @@ import { User } from './../../models/user.model';
 import { TweetService } from './../../services/tweet.service';
 import { UserService } from './../../services/user.service';
 import { Tweet } from './../../models/tweet.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -65,6 +65,12 @@ export class TweetComponent implements OnInit {
       if (!this.panelOpenState) this.panelOpenState = true;
     });
 
+  }
+
+  deleteTweet() {
+    this.tweetService.deleteTweet(this.loggedInUser.username, this.tweet.tweetId).subscribe((res: any) => {
+      this.tweetService.refreshTweets();
+    })
   }
 
 }
